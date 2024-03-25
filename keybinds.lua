@@ -2,6 +2,8 @@ local map = function(mode, keys, action, description)
   vim.keymap.set(mode, keys, action, { desc = description })
 end
 
+map('n', '<leader>pv', vim.cmd.Ex)
+
 -- NOTE: Clipboard keybinds
 map({ 'n', 'v' }, '<leader>y', '"+y', '[y]ank highlighted text')
 map({ 'n', 'v' }, '<leader>Y', '"+Y', '[Y]ank entire line')
