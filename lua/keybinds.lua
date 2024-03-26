@@ -39,4 +39,4 @@ end)
 
 -- NOTE: Colorscheme keybind
 
-map('n', '<leader>nc', ':lua NextColorscheme()<CR>', 'Change to next color scheme')
+map('n', '<leader>nc', NextColorscheme, 'Change to next color scheme')
