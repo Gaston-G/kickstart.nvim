@@ -36,3 +36,5 @@ end)
 map('n', '<C-S-N>', function()
   harpoon:list():next()
 end)
+
+map('n', '<leader>nc', ':lua NextColorscheme()<CR>', 'Change to next color scheme')

@@ -561,6 +561,5 @@ require('lazy').setup({
     },
   },
 })
-
 -- NOTE: Add keybinds
 require 'keybinds'
