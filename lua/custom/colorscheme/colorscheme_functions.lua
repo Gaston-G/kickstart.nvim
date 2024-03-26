@@ -17,7 +17,6 @@ function NextColorscheme()
 end
 
 function LoadColorscheme()
-  local colorscheme = 1
   if vim.fn.filereadable(path_to_saving_file) == 1 then
     colorscheme_index = tonumber(vim.fn.readfile(path_to_saving_file)[1])
   end
