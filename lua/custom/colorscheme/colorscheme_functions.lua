@@ -13,15 +13,15 @@ function NextColorscheme()
 
   local next_colorscheme = colorschemes[colorscheme_index]
   vim.cmd.colorscheme(next_colorscheme)
-  vim.fn.writefile({ next_colorscheme }, path_to_saving_file)
+  vim.fn.writefile({ tostring(colorscheme_index) }, path_to_saving_file)
 end
 
 function LoadColorscheme()
-  local colorscheme = colorschemes[1]
+  local colorscheme = 1
   if vim.fn.filereadable(path_to_saving_file) == 1 then
-    colorscheme = vim.fn.readfile(path_to_saving_file)[1]
+    colorscheme_index = tonumber(vim.fn.readfile(path_to_saving_file)[1])
   end
-  vim.cmd.colorscheme(colorscheme)
+  vim.cmd.colorscheme(colorschemes[colorscheme_index])
 end
 
 return {}
