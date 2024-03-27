@@ -4,7 +4,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -102,12 +102,6 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
-  },
-
-  {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
