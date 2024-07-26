@@ -4,7 +4,7 @@ local colorschemes = {
 }
 
 local colorscheme_index = 1
-local path_to_saving_file = vim.fn.stdpath 'config' .. '/lua/custom/colorscheme/colorscheme_name'
+local path_to_saving_file = vim.fn.stdpath 'config' .. '/lua/custom/colorscheme/colorscheme_index'
 function NextColorscheme()
   colorscheme_index = colorscheme_index + 1
   if colorscheme_index > #colorschemes then
