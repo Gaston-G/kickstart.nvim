@@ -291,6 +291,7 @@ require('lazy').setup({
         end,
       })
 
+      local nvim_lsp = require 'lspconfig'
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -299,8 +300,16 @@ require('lazy').setup({
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local servers = {
-        clangd = {},
-        jdtls = {},
+        clangd = {
+          root_dir = function(fname)
+            return nvim_lsp.util.root_pattern('compile_commands.json', '.git', 'Makefile')(fname) or vim.fn.getcwd()
+          end,
+        },
+        jdtls = {
+          root_dir = function(fname)
+            return nvim_lsp.util.root_pattern('.git', 'pom.xml', 'build.gradle')(fname) or vim.fn.getcwd()
+          end,
+        },
         lua_ls = {
           settings = {
             Lua = {
