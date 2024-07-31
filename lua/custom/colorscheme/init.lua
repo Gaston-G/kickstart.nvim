@@ -5,4 +5,7 @@ return {
   {
     'Shatur/neovim-ayu',
   },
+  {
+    'dickbrouwer/Vim-Colorschemes',
+  },
 }

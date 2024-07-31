@@ -1,6 +1,11 @@
 local colorschemes = {
+  -- Dark themes
   'tokyonight-night',
   'ayu-dark',
+  'molokai_black',
+  -- Light themes
+
+  'github',
 }
 
 local colorscheme_index = 1
