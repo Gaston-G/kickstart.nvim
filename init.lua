@@ -259,11 +259,7 @@ require('lazy').setup({
             return nvim_lsp.util.root_pattern('compile_commands.json', '.git', 'Makefile')(fname) or vim.fn.getcwd()
           end,
         },
-        jdtls = {
-          root_dir = function(fname)
-            return nvim_lsp.util.root_pattern('.git', 'pom.xml', 'build.gradle')(fname) or vim.fn.getcwd()
-          end,
-        },
+        -- jdtls = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -321,6 +317,8 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        cpp = { 'clang-format' }, -- Add clang-format for C++
+        c = { 'clang-format' }, -- Add clang-format for C
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
