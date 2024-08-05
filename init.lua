@@ -259,12 +259,22 @@ require('lazy').setup({
             return nvim_lsp.util.root_pattern('compile_commands.json', '.git', 'Makefile')(fname) or vim.fn.getcwd()
           end,
         },
-        -- jdtls = {},
         lua_ls = {
           settings = {
             Lua = {
               completion = {
                 callSnippet = 'Replace',
+              },
+            },
+          },
+        },
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = 'workspace',
               },
             },
           },
@@ -306,6 +316,12 @@ require('lazy').setup({
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
+        vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+          pattern = { '*.h' },
+          callback = function()
+            vim.bo.filetype = 'cpp'
+          end,
+        })
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
@@ -319,11 +335,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         cpp = { 'clang-format' }, -- Add clang-format for C++
         c = { 'clang-format' }, -- Add clang-format for C
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
+        python = { 'isort', 'black' },
         -- javascript = { { "prettierd", "prettier" } },
       },
     },
